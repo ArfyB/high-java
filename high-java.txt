@@ -1,0 +1,89 @@
+high-java
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+...을 통해 배열을 개개의 값으로 나눌 수 있다.
+
+// function sumUp(num1, num2, num3) {
+//     return num1 + num2 + num3;
+// }
+// console.log(sumUp(1, 2));
+
+
+// function sumUp(numbers) {
+//     let result = 0;
+
+//     for (const number of numbers) {
+//         result += number;
+//     }
+
+//     return result;
+// }
+// console.log(  sumUp([1, 2, 3, 4, 5])  );
+
+
+// ...추가시 매개변수(파라미터)의 양에 관계없이 허용
+// 또한 그냥 1, 2, 3, 4, 5 라고 입력해도 이후에 배열로 병합됨.
+// 파라미터에 배열을 넣지 않아도 자동적으로 배열로 랩핑
+// 대신 배열을 넣으면 오히려 더해지지 않음.
+function sumUp(...numbers) {
+    let result = 0;
+
+    for (const number of numbers) {
+        result += number;
+    }
+
+    return result;
+}
+// console.log(  sumUp(1, 2, 3, 4, 5)  );
+
+// 더해지지않음.
+// const inputNumbers = [1, 5, 10, 11, 20, 31];
+// console.log(sumUp(inputNumbers));
+
+//해결책    ...은 배열을 여러 개별 값으로 분산시킴
+const inputNumbers = [1, 5, 10, 11, 20, 31];
+console.log(sumUp(...inputNumbers));
+
+
+console.log(sumUp);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+``를 사용시
+
+console.log(`
+
+`);
+여러줄의 코드 작성가능
+
+
+위를 아래와 같이 변환 가능
+console.log('Hi' + userName + '!');
+console.log(` Hi ${userName}! `);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+비동기식 코드 작업을 위한 프로미스
+
+const fs = require("fs/promises");
+
+function readFile() {
+let fileData;
+
+fs.readFile('data.txt').then(function(fileData) {
+    console.log('File parsing done!');
+    console.log(fileData.toString());
+    // return anotherAsyncOperation;
+})
+.then(function () {} )
+.then(function () {} )
+.then(function () {} );
+
+이런식으로 비동기식 코드의 중첩을 프로미스 체인으로 사용가능
+
+  
+  console.log("Hi there!");
+}
+
+readFile();
